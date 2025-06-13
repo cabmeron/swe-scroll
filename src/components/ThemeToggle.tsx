@@ -11,7 +11,7 @@ const ThemeToggle: React.FC = () => {
       onClick={toggleTheme}
       variant="ghost"
       size="icon"
-      className="fixed top-4 right-4 z-50 bg-amber-100 hover:bg-amber-200 dark:bg-gray-800 dark:hover:bg-gray-700 border-2 border-amber-300 dark:border-gray-600"
+      className="fixed top-4 right-4 z-50 bg-slate-100 hover:bg-slate-200 dark:bg-gray-800 dark:hover:bg-gray-700 border border-slate-200 dark:border-gray-600"
     >
       {theme === 'light' ? (
         <span className="text-2xl">🌙</span>
