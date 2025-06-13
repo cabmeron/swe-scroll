@@ -48,7 +48,7 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 dark:from-amber-950 dark:via-orange-950 dark:to-amber-900">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 dark:from-gray-950 dark:via-gray-900 dark:to-black">
       <ThemeToggle />
       
       {/* Background texture overlay */}
@@ -65,7 +65,7 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
           <Button
             onClick={onBack}
             variant="ghost"
-            className="mb-6 text-amber-700 hover:text-amber-900 hover:bg-amber-100 dark:text-amber-300 dark:hover:text-amber-100 dark:hover:bg-amber-800"
+            className="mb-6 text-amber-700 hover:text-amber-900 hover:bg-amber-100 dark:text-amber-300 dark:hover:text-amber-100 dark:hover:bg-gray-800 border-2 border-amber-300 dark:border-gray-700"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Library
@@ -74,15 +74,15 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
 
         {/* Book Header */}
         <div className="max-w-4xl mx-auto mb-12">
-          <Card className="bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900 dark:to-orange-900 border-2 border-amber-300 dark:border-amber-600 shadow-2xl">
+          <Card className="bg-gradient-to-r from-amber-100 to-orange-100 dark:from-gray-800 dark:to-gray-900 border-2 border-amber-300 dark:border-gray-700 shadow-2xl">
             <CardHeader className="text-center pb-6">
-              <CardTitle className="text-4xl md:text-5xl font-bold text-amber-900 dark:text-amber-100 mb-2">
+              <CardTitle className="text-4xl md:text-5xl font-bold text-amber-900 dark:text-amber-200 mb-2">
                 {book.title}
               </CardTitle>
               <CardDescription className="text-xl text-amber-700 dark:text-amber-300 font-medium mb-4">
                 by {book.author}
               </CardDescription>
-              <p className="text-lg text-amber-800 dark:text-amber-200 mb-6 max-w-2xl mx-auto">
+              <p className="text-lg text-amber-800 dark:text-amber-300 mb-6 max-w-2xl mx-auto">
                 {book.description}
               </p>
               
@@ -105,12 +105,12 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
 
         {/* Chapters */}
         <div className="max-w-4xl mx-auto space-y-6">
-          <h2 className="text-3xl font-bold text-amber-900 dark:text-amber-100 text-center mb-8">
+          <h2 className="text-3xl font-bold text-amber-900 dark:text-amber-200 text-center mb-8">
             Chapters & Insights
           </h2>
           
           {book.chapters.map((chapter, index) => (
-            <Card key={chapter.id} className="bg-gradient-to-r from-white to-amber-50 dark:from-amber-950 dark:to-amber-900 border-2 border-amber-200 dark:border-amber-700 shadow-lg hover:shadow-xl transition-all duration-300">
+            <Card key={chapter.id} className="bg-gradient-to-r from-white to-amber-50 dark:from-gray-800 dark:to-gray-900 border-2 border-amber-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
               <CardHeader 
                 className="cursor-pointer"
                 onClick={() => toggleChapter(chapter.id)}
@@ -118,7 +118,7 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center mb-2">
-                      <span className="text-sm font-bold text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-800 px-3 py-1 rounded-full mr-3">
+                      <span className="text-sm font-bold text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-gray-700 px-3 py-1 rounded-full mr-3">
                         Chapter {index + 1}
                       </span>
                       <div className="flex items-center">
@@ -126,7 +126,7 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
                         <span className="text-sm text-amber-600 dark:text-amber-400">{chapter.readTime}</span>
                       </div>
                     </div>
-                    <CardTitle className="text-xl md:text-2xl text-amber-900 dark:text-amber-100 mb-2">
+                    <CardTitle className="text-xl md:text-2xl text-amber-900 dark:text-amber-200 mb-2">
                       {chapter.title}
                     </CardTitle>
                     <div className="flex items-center mb-2">
@@ -148,23 +148,23 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
               
               {expandedChapter === chapter.id && (
                 <CardContent className="pt-0">
-                  <div className="border-t border-amber-200 dark:border-amber-700 pt-6">
+                  <div className="border-t border-amber-200 dark:border-gray-700 pt-6">
                     {/* Summary */}
                     <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-amber-900 dark:text-amber-100 mb-3">Summary</h4>
-                      <p className="text-amber-800 dark:text-amber-200 leading-relaxed bg-amber-50 dark:bg-amber-900 p-4 rounded-lg border-l-4 border-amber-400">
+                      <h4 className="text-lg font-semibold text-amber-900 dark:text-amber-200 mb-3">Summary</h4>
+                      <p className="text-amber-800 dark:text-amber-300 leading-relaxed bg-amber-50 dark:bg-gray-800 p-4 rounded-lg border-l-4 border-amber-400">
                         {chapter.summary}
                       </p>
                     </div>
 
                     {/* Key Points */}
                     <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-amber-900 dark:text-amber-100 mb-3">Key Points</h4>
+                      <h4 className="text-lg font-semibold text-amber-900 dark:text-amber-200 mb-3">Key Points</h4>
                       <ul className="space-y-2">
                         {chapter.bulletPoints.map((point, pointIndex) => (
                           <li key={pointIndex} className="flex items-start">
                             <span className="text-amber-600 dark:text-amber-400 mr-3 mt-1">•</span>
-                            <span className="text-amber-800 dark:text-amber-200">{point}</span>
+                            <span className="text-amber-800 dark:text-amber-300">{point}</span>
                           </li>
                         ))}
                       </ul>
@@ -173,11 +173,11 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
                     {/* Quotes */}
                     {chapter.quotes.length > 0 && (
                       <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-amber-900 dark:text-amber-100 mb-3">Notable Quotes</h4>
+                        <h4 className="text-lg font-semibold text-amber-900 dark:text-amber-200 mb-3">Notable Quotes</h4>
                         {chapter.quotes.map((quote, quoteIndex) => (
                           <blockquote 
                             key={quoteIndex} 
-                            className="border-l-4 border-amber-500 pl-6 py-4 mb-4 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900 dark:to-orange-900 rounded-r-lg italic text-amber-800 dark:text-amber-200 text-lg"
+                            className="border-l-4 border-amber-500 pl-6 py-4 mb-4 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-gray-800 dark:to-gray-700 rounded-r-lg italic text-amber-800 dark:text-amber-300 text-lg"
                           >
                             "{quote}"
                           </blockquote>
@@ -192,8 +192,8 @@ const BookView: React.FC<BookViewProps> = ({ book, onBack }) => {
         </div>
 
         {/* Footer */}
-        <footer className="text-center mt-16 py-8 border-t border-amber-300 dark:border-amber-700">
-          <p className="text-amber-700 dark:text-amber-300 italic">
+        <footer className="text-center mt-16 py-8 border-t border-amber-300 dark:border-gray-700">
+          <p className="text-amber-700 dark:text-amber-400 italic">
             "The more that you read, the more things you will know. The more that you learn, the more places you'll go." - Dr. Seuss
           </p>
         </footer>

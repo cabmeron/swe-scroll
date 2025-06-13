@@ -115,7 +115,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 dark:from-amber-950 dark:via-orange-950 dark:to-amber-900">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 dark:from-gray-950 dark:via-gray-900 dark:to-black">
       <ThemeToggle />
       
       {/* Background texture overlay */}
@@ -129,10 +129,10 @@ const Index = () => {
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-bold text-amber-900 dark:text-amber-100 mb-4 drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl font-bold text-amber-900 dark:text-amber-200 mb-4 drop-shadow-lg">
             📚 Renaissance Reader
           </h1>
-          <p className="text-xl md:text-2xl text-amber-800 dark:text-amber-200 mb-8 italic">
+          <p className="text-xl md:text-2xl text-amber-800 dark:text-amber-300 mb-8 italic">
             "Illuminated wisdom from the masters of antiquity"
           </p>
           <div className="w-32 h-1 bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400 mx-auto mb-8 rounded-full"></div>
@@ -147,7 +147,7 @@ const Index = () => {
               placeholder="Search ancient wisdom... (title, author, or topic)"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-12 pr-4 py-6 text-lg border-2 border-amber-300 dark:border-amber-600 rounded-lg bg-white/90 dark:bg-amber-950/90 backdrop-blur-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-200 dark:focus:ring-amber-600 shadow-lg dark:text-amber-100"
+              className="pl-12 pr-4 py-6 text-lg border-2 border-amber-300 dark:border-gray-700 rounded-lg bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:border-amber-500 dark:focus:border-amber-400 focus:ring-2 focus:ring-amber-200 dark:focus:ring-amber-400/30 shadow-lg text-amber-900 dark:text-amber-100"
             />
           </div>
         </div>
@@ -157,18 +157,18 @@ const Index = () => {
           {filteredBooks.map((book) => (
             <Card 
               key={book.id} 
-              className="group cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-amber-50 to-orange-50 dark:from-amber-900 dark:to-orange-900 border-2 border-amber-200 dark:border-amber-700 hover:border-amber-400 dark:hover:border-amber-500"
+              className="group cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-amber-50 to-orange-50 dark:from-gray-800 dark:to-gray-900 border-2 border-amber-200 dark:border-gray-700 hover:border-amber-400 dark:hover:border-amber-500"
               onClick={() => setSelectedBook(book)}
             >
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-2">
-                  <Book className="h-8 w-8 text-amber-700 dark:text-amber-300 flex-shrink-0" />
+                  <Book className="h-8 w-8 text-amber-700 dark:text-amber-400 flex-shrink-0" />
                   <div className="flex items-center text-amber-600 dark:text-amber-400">
                     <Star className="h-4 w-4 fill-current mr-1" />
                     <span className="text-sm font-medium">{book.rating}</span>
                   </div>
                 </div>
-                <CardTitle className="text-2xl font-bold text-amber-900 dark:text-amber-100 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
+                <CardTitle className="text-2xl font-bold text-amber-900 dark:text-amber-200 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
                   {book.title}
                 </CardTitle>
                 <CardDescription className="text-amber-700 dark:text-amber-300 font-medium">
@@ -177,7 +177,7 @@ const Index = () => {
               </CardHeader>
               
               <CardContent>
-                <p className="text-amber-800 dark:text-amber-200 mb-4 line-clamp-3">
+                <p className="text-amber-800 dark:text-amber-300 mb-4 line-clamp-3">
                   {book.description}
                 </p>
                 
@@ -191,7 +191,7 @@ const Index = () => {
                   </span>
                 </div>
                 
-                <Button className="w-full mt-4 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 dark:from-amber-500 dark:to-orange-500 dark:hover:from-amber-600 dark:hover:to-orange-600 text-white font-semibold py-2 rounded-lg shadow-lg transform transition-all duration-200 group-hover:scale-105">
+                <Button className="w-full mt-4 bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-500 dark:to-orange-500 hover:from-amber-700 hover:to-orange-700 dark:hover:from-amber-600 dark:hover:to-orange-600 text-white font-semibold py-2 rounded-lg shadow-lg transform transition-all duration-200 group-hover:scale-105">
                   Begin Reading
                 </Button>
               </CardContent>
@@ -202,8 +202,8 @@ const Index = () => {
         {/* Empty State */}
         {filteredBooks.length === 0 && searchTerm && (
           <div className="text-center py-16">
-            <Book className="h-24 w-24 text-amber-400 dark:text-amber-600 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-amber-800 dark:text-amber-200 mb-2">No tomes found</h3>
+            <Book className="h-24 w-24 text-amber-400 dark:text-amber-500 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-amber-800 dark:text-amber-300 mb-2">No tomes found</h3>
             <p className="text-amber-600 dark:text-amber-400">
               Your search for "{searchTerm}" yielded no ancient wisdom. Try different terms.
             </p>
@@ -211,8 +211,8 @@ const Index = () => {
         )}
 
         {/* Footer */}
-        <footer className="text-center mt-16 py-8 border-t border-amber-300 dark:border-amber-700">
-          <p className="text-amber-700 dark:text-amber-300 italic">
+        <footer className="text-center mt-16 py-8 border-t border-amber-300 dark:border-gray-700">
+          <p className="text-amber-700 dark:text-amber-400 italic">
             "A room without books is like a body without a soul" - Cicero
           </p>
         </footer>
