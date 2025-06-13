@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { Search, Book, Clock, Star } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import BookView from '@/components/BookView';
+import ThemeToggle from '@/components/ThemeToggle';
 
 // Example book data structure
 const sampleBooks = [
@@ -115,10 +115,12 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 dark:from-amber-950 dark:via-orange-950 dark:to-amber-900">
+      <ThemeToggle />
+      
       {/* Background texture overlay */}
       <div 
-        className="absolute inset-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 opacity-20 pointer-events-none dark:opacity-10"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}
@@ -127,25 +129,25 @@ const Index = () => {
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-bold text-amber-900 mb-4 drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl font-bold text-amber-900 dark:text-amber-100 mb-4 drop-shadow-lg">
             📚 Renaissance Reader
           </h1>
-          <p className="text-xl md:text-2xl text-amber-800 mb-8 italic">
+          <p className="text-xl md:text-2xl text-amber-800 dark:text-amber-200 mb-8 italic">
             "Illuminated wisdom from the masters of antiquity"
           </p>
-          <div className="w-32 h-1 bg-gradient-to-r from-amber-600 to-orange-600 mx-auto mb-8 rounded-full"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400 mx-auto mb-8 rounded-full"></div>
         </div>
 
         {/* Search Section */}
         <div className="max-w-2xl mx-auto mb-12">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-600 h-5 w-5" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-600 dark:text-amber-400 h-5 w-5" />
             <Input
               type="text"
               placeholder="Search ancient wisdom... (title, author, or topic)"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-12 pr-4 py-6 text-lg border-2 border-amber-300 rounded-lg bg-white/90 backdrop-blur-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-200 shadow-lg"
+              className="pl-12 pr-4 py-6 text-lg border-2 border-amber-300 dark:border-amber-600 rounded-lg bg-white/90 dark:bg-amber-950/90 backdrop-blur-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-200 dark:focus:ring-amber-600 shadow-lg dark:text-amber-100"
             />
           </div>
         </div>
@@ -155,31 +157,31 @@ const Index = () => {
           {filteredBooks.map((book) => (
             <Card 
               key={book.id} 
-              className="group cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-amber-50 to-orange-50 border-2 border-amber-200 hover:border-amber-400"
+              className="group cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 bg-gradient-to-b from-amber-50 to-orange-50 dark:from-amber-900 dark:to-orange-900 border-2 border-amber-200 dark:border-amber-700 hover:border-amber-400 dark:hover:border-amber-500"
               onClick={() => setSelectedBook(book)}
             >
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-2">
-                  <Book className="h-8 w-8 text-amber-700 flex-shrink-0" />
-                  <div className="flex items-center text-amber-600">
+                  <Book className="h-8 w-8 text-amber-700 dark:text-amber-300 flex-shrink-0" />
+                  <div className="flex items-center text-amber-600 dark:text-amber-400">
                     <Star className="h-4 w-4 fill-current mr-1" />
                     <span className="text-sm font-medium">{book.rating}</span>
                   </div>
                 </div>
-                <CardTitle className="text-2xl font-bold text-amber-900 group-hover:text-amber-700 transition-colors">
+                <CardTitle className="text-2xl font-bold text-amber-900 dark:text-amber-100 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
                   {book.title}
                 </CardTitle>
-                <CardDescription className="text-amber-700 font-medium">
+                <CardDescription className="text-amber-700 dark:text-amber-300 font-medium">
                   by {book.author}
                 </CardDescription>
               </CardHeader>
               
               <CardContent>
-                <p className="text-amber-800 mb-4 line-clamp-3">
+                <p className="text-amber-800 dark:text-amber-200 mb-4 line-clamp-3">
                   {book.description}
                 </p>
                 
-                <div className="flex items-center justify-between text-sm text-amber-600">
+                <div className="flex items-center justify-between text-sm text-amber-600 dark:text-amber-400">
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 mr-1" />
                     <span>{book.totalReadTime}</span>
@@ -189,7 +191,7 @@ const Index = () => {
                   </span>
                 </div>
                 
-                <Button className="w-full mt-4 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold py-2 rounded-lg shadow-lg transform transition-all duration-200 group-hover:scale-105">
+                <Button className="w-full mt-4 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 dark:from-amber-500 dark:to-orange-500 dark:hover:from-amber-600 dark:hover:to-orange-600 text-white font-semibold py-2 rounded-lg shadow-lg transform transition-all duration-200 group-hover:scale-105">
                   Begin Reading
                 </Button>
               </CardContent>
@@ -200,17 +202,17 @@ const Index = () => {
         {/* Empty State */}
         {filteredBooks.length === 0 && searchTerm && (
           <div className="text-center py-16">
-            <Book className="h-24 w-24 text-amber-400 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-amber-800 mb-2">No tomes found</h3>
-            <p className="text-amber-600">
+            <Book className="h-24 w-24 text-amber-400 dark:text-amber-600 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-amber-800 dark:text-amber-200 mb-2">No tomes found</h3>
+            <p className="text-amber-600 dark:text-amber-400">
               Your search for "{searchTerm}" yielded no ancient wisdom. Try different terms.
             </p>
           </div>
         )}
 
         {/* Footer */}
-        <footer className="text-center mt-16 py-8 border-t border-amber-300">
-          <p className="text-amber-700 italic">
+        <footer className="text-center mt-16 py-8 border-t border-amber-300 dark:border-amber-700">
+          <p className="text-amber-700 dark:text-amber-300 italic">
             "A room without books is like a body without a soul" - Cicero
           </p>
         </footer>
