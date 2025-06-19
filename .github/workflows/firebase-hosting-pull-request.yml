@@ -15,3 +15,5 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SWE_SCROLL_6BC46 }}'
           projectId: swe-scroll-6bc46
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks

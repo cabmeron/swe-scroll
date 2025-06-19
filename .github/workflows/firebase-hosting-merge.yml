@@ -18,3 +18,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SWE_SCROLL_6BC46 }}'
           channelId: live
           projectId: swe-scroll-6bc46
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
